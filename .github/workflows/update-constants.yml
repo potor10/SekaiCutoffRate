@@ -1,0 +1,22 @@
+name: update-constants
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install regression
+      run: npm i regression
+    - name: Run script
+      run: node index.js
+    - name: Check for changes
+      run: git status
+    - name: Stage changed files
+      run: git add -A
+    - name: Commit changed files
+      run: git commit -m "Updating rate.json"
+    - name: Fetch from master
+      run: git fetch origin master
+    - name: Push code to master
+      run: git push origin master
