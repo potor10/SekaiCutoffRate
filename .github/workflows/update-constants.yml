@@ -21,4 +21,4 @@ jobs:
         git config user.name potor
         git commit -m "Updating rate.json"
     - name: Push code to master
-      run: git push origin master
+      run: git push origin HEAD:master
