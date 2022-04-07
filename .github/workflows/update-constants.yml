@@ -1,8 +1,7 @@
 name: update-constants
 on: 
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '00 4,12 * * *'
+  push
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,14 +11,17 @@ jobs:
     - name: Install regression
       run: npm i regression
     - name: Run script
-      run: node index.js
+      # run: node index.js
     - name: Check for changes
       run: git status
     - name: Stage changed files
       run: git add -A
     - name: Commit changed files
-      run: git config user.email "liupotor4@gmail.com"
-      run: git config user.name "Potor"
+      env:
+        EMAIL_SECRET: ${{ secrets.EMAIL }}
+        NAME_SECRET: ${{ secrets.NAME }}
+      run: git config user.email $EMAIL_SECRET
+      run: git config user.name $NAME_SECRET
       run: git commit -m "Updating rate.json"
     - name: Push code to master
       run: git push origin master
