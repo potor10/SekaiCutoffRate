@@ -1,5 +1,8 @@
 name: update-constants
-on: [push]
+on: 
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '00 4,12 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,8 +18,8 @@ jobs:
     - name: Stage changed files
       run: git add -A
     - name: Commit changed files
+      run: git config user.email "liupotor4@gmail.com"
+      run: git config user.name "Potor"
       run: git commit -m "Updating rate.json"
-    - name: Fetch from master
-      run: git fetch origin master
     - name: Push code to master
       run: git push origin master
