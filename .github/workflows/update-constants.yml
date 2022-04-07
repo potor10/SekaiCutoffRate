@@ -20,8 +20,8 @@ jobs:
         EMAIL_SECRET: ${{ secrets.EMAIL }}
         NAME_SECRET: ${{ secrets.NAME }}
       run: |
-        git config user.email $EMAIL_SECRET
-        git config user.name $NAME_SECRET
+        git config user.email liupotor4@gmail.com
+        git config user.name potor
         git commit -m "Updating rate.json"
     - name: Push code to master
       run: git push origin master
