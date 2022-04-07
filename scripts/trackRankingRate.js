@@ -142,7 +142,7 @@ const trackRankingRate = () => {
   const recursiveRequest = (idx) => {
     if (idx >= previousEvents.length) {
       console.log('Finished Obtaining Rate Information')
-      fs.writeFileSync(`./rate.json`, JSON.stringify(rate));
+      fs.writeFileSync(`./rank/rate.json`, JSON.stringify(rate));
       return
     } else if (!rate.hasOwnProperty(previousEvents[idx].id)) {
       console.log(`Adding Rate Constant For Event ${previousEvents[idx].id}`);
