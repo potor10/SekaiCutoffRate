@@ -1,5 +1,6 @@
 name: update-constants
 on: 
+  push:
   schedule:
   - cron: '0 * * * *'
 
