@@ -1,6 +1,8 @@
 name: update-constants
 on: 
-  [push]
+  schedule:
+    schedule:
+    - cron:  '35 3,17 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
