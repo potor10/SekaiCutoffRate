@@ -11,6 +11,11 @@ jobs:
       run: npm i regression
     - name: Run script
       run: node index.js
+    - name: Setup SSH Key
+      env:
+        USERNAME: ${{ secrets.USERNAME }}
+        TOKEN: ${{ secrets.TOKEN }}
+      run: git remote add origin https://$USERNAME:$TOKEN@github.com/$USERNAME/SekaiCutoffRate.git
     - name: Check for changes
       run: git status
     - name: Stage changed files
