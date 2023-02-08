@@ -158,7 +158,7 @@ const trackRankingRate = () => {
 
       rate[previousEvents[idx].id] = {
         characterIds: characterIds,
-        eventType: events[previousEvents[idx].id - 1].eventType
+        eventType: binarySearch(previousEvents[idx].id, 'id', events).eventType
       }
 
       recursiveHttp(previousEvents[idx], 0, () => {recursiveRequest(idx+1)})
